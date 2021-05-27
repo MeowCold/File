@@ -12,7 +12,7 @@ NAME_BIN="rclone"
 # Short-Description: Start rclone at boot time
 # Description:       Enable rclone by daemon.
 # Original author:   955
-# Original author    URL: https://codeu.cn/134.html
+# Original author:    URL: https://codeu.cn/134.html
 ### END INIT INFO
 
 NAME="21Vianet" #rclone name名
