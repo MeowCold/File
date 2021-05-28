@@ -15,10 +15,10 @@ NAME_BIN="rclone"
 # Original author:   URL: https://codeu.cn/134.html
 ### END INIT INFO
 
-NAME="21Vianet" #rclone name名
-REMOTE='' #远程文件夹
-LOCAL='/volume1/2TB/Drive/21Vianet' #挂载地址
-CACHE='' #缓存地址
+NAME="OneDriveS" #rclone name名
+REMOTE='/' #远程文件夹
+LOCAL='/volume1/DriveS/OneDriveS' #挂载地址
+CACHE='/volume1/DriveS/DataCache/OneDriveS' #缓存地址
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[信息]${Font_color_suffix}"
@@ -41,7 +41,7 @@ do_start(){
 	
 		fusermount -zuq $LOCAL >/dev/null 2>&1
 		mkdir -p $LOCAL
-		sudo /usr/bin/rclone mount $NAME:$REMOTE $LOCAL --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --low-level-retries 200 --cache-dir $CACHE --vfs-read-chunk-size 32M  --attr-timeout 5m --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 10G --vfs-read-chunk-size-limit 100M --buffer-size 100M >/dev/null 2>&1 &
+		/usr/bin/rclone  --config=/volume1/DriveS/Service/config/rclone/rclone.conf mount $NAME:$REMOTE $LOCAL  --cache-dir $CACHE --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --low-level-retries 200 --vfs-read-chunk-size 32M  --attr-timeout 5m --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 10G --vfs-read-chunk-size-limit 100M --buffer-size 100M >/dev/null 2>&1 &
 		sleep 2s
 		
 
